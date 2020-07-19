@@ -7,9 +7,10 @@ class Game:
         self.curPlayer = 1
         self.boardSize = 3
         self.moveHistory = []
-        self.masterFC = 0
+        
         self.p1 = None
         self.p2 = None
+        self.depth=0
 
     def isBoardFull(self):
         ans = True
@@ -59,14 +60,14 @@ class Game:
             return self.board[1][1]
         elif self.board[2][0] == self.board[2][1] == self.board[2][2] != 0:
             return self.board[2][1]
+        elif self.board[0][0] == self.board[1][1] == self.board[2][2] != 0:
+            return self.board[0][0] 
         elif self.board[0][0] == self.board[1][0] == self.board[2][0] != 0:
             return self.board[0][0]
         elif self.board[0][1] == self.board[1][1] == self.board[2][1] != 0:
             return self.board[0][1]
         elif self.board[0][2] == self.board[1][2] == self.board[2][2] != 0:
             return self.board[0][2]
-        elif self.board[0][0] == self.board[1][1] == self.board[2][2] != 0:
-            return self.board[0][0]
         elif self.board[0][2] == self.board[1][1] == self.board[2][0] != 0:
             return self.board[0][2]
         else:
