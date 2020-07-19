@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Tic Tac Toe</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    
+  </head>
+
+  <body>
+  <div class="backg">
+		<div class="planet">
+			<div class="r1"></div>
+			<div class="r2"></div>
+			<div class="r3"></div>
+			<div class="r4"></div>
+			<div class="r5"></div>
+			<div class="r6"></div>
+			<div class="r7"></div>
+			<div class="r8"></div>
+			<div class="shad"></div>
+		</div>
+		<div class="stars">
+			<div class="s1"></div>
+			<div class="s2"></div>
+			<div class="s3"></div>
+			<div class="s4"></div>
+			<div class="s5"></div>
+			<div class="s6"></div>
+		</div>
+		<div class="an">
+			<div class="tank"></div>
+			<div class="astro">
+					
+					<div class="helmet">
+						<div class="glass">
+							<div class="shine"></div>
+						</div>
+					</div>
+					<div class="dress">
+						<div class="c">
+							<div class="btn1"></div>
+							<div class="btn2"></div>
+							<div class="btn3"></div>
+							<div class="btn4"></div>
+						</div>
+					</div>
+					<div class="handl">
+						<div class="handl1">
+							<div class="glovel">
+								<div class="thumbl"></div>
+								<div class="b2"></div>
+							</div>
+						</div>
+					</div>
+					<div class="handr">
+						<div class="handr1">
+							<div class="glover">
+								<div class="thumbr"></div>
+								<div class="b1"></div>
+							</div>
+						</div>
+					</div>
+					<div class="legl">
+						<div class="bootl1">
+							<div class="bootl2"></div>
+						</div>
+					</div>
+					<div class="legr">
+						<div class="bootr1">
+							<div class="bootr2"></div>
+						</div>
+					</div>
+					<div class="pipe">
+						<div class="pipe2">
+							<div class="pipe3"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+    </div>
+
+  
+
+	  <div class="c1"> 
+  	
+    <div class="container">
+      
+      <div class="bottom-message"> 
+        {% if game.win == 1 %}
+          <div class="winner-message"><div id="a"><img src="{{url_for('static', filename='xxx2.jpg')}}"  style="display:block;"  width="30%" height="30%"></div>
+          <div id="b"> Wins!</div>
+          </div>
+          <div>
+          <a href="/?gameover=1">Play again?</a>
+          </div>
+        {% elif game.win == 2 %}
+          <div class="winner-message"><div id="a"><img src="{{url_for('static', filename='ooo2.jpg')}}"  style="display:block;"  width="30%" height="30%"></div>
+          <div id="b"> Wins!</div>
+          </div>
+          <a href="/?gameover=1">Play again?</a>
+        {% elif game.win == 0 and game.isBoardFull() %}
+          <div class="winner-message">Tie Game...</div>
+          <a href="/?gameover=1">Play again?</a>
+        {% endif %}
+      </div>
+      <table id="game-table" class="centered">
+        {% for row in game.board %}
+        {% set outer_loop = loop %}
+        <tr>
+          {% for column in row %}
+          <td>
+            {% if column==1 %}
+            <div class="game-cell-X"><img src="{{url_for('static', filename='xxx.jpg')}}"  style="display:block;"  width="100%" height="100%">
+             </div>
+            {% elif column==2 %}
+            <div class="game-cell-O"><img src="{{url_for('static', filename='ooo.jpg')}}" style="display:block;"  width="100%" height="100%"  >
+            </div>
+            {% elif game.win == 0 and not game.isBoardFull() %}
+            <div class="game-cell-empty">
+              <form action="/" method="post">
+                <button name="play" id="playbutton{{outer_loop.index0*3+loop.index0}}" class="clickable" type="submit" value="{{outer_loop.index0*3+loop.index0}}"></button>
+              </form>
+            </div>
+            {% endif %}
+          </td>
+          {% endfor %}
+        </tr>
+        {% endfor %}
+      </table>
+     
+    </div>
+    <br>
+    <br>
+    <div class="last">
+    <div>
+   <a href="/start">Start Over</a>
+   </div>
+    
+   
+    <br>
+
+     <form action="/hint/" method="post">
+                <button name="hint" id="hint"  onclick="showDiv()" type="submit" class="hh" value="hint">HINT</button>
+        </form>
+    <div id="h"   class="answer_list" > Row Numer:{{ row }}
+                            <br>    Column Number: {{ col  }}</div>
+    
+   </div>
+     
+    {% if move > -1 %}
+      <script>
+        document.getElementById("playbutton{{move}}").click();
+      </script>
+	
+ 
+    
+<script>
+function showDiv() {
+   document.getElementById('h').style.display = "block";
+}
+
+
+</script>
+
+	{% endif %}
+ 
+
+	</div>
+	<div>
+		
+		
+	</div>
+  </div>
+  </body>
+
+</html>
