@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head
+    <title></title>
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style1.css') }}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  </head>
+
+  <body>
+
+  <div class="container">
+  
+  
+			<div class="rocket">
+				<div class="body">
+					<div class="mirror"></div>
+				</div>
+				<div class="nozzle"></div>
+				<div class="fire"></div>
+			</div>
+			<div class="stones">
+				<div class="s1"></div>
+				<div class="s2"></div>
+				<div class="s3"></div>
+				<div class="s4"></div>
+				<div class="s5"></div>
+				<div class="s6"></div>
+				<div class="s7"></div>
+				<div class="s8"></div>
+				<div class="s9"></div>
+				<div class="s10"></div>
+				<div class="s11"></div>
+				<div class="s12"></div>
+				<div class="s13"></div>
+			</div>
+		</div>
+   
+    <div>
+    </div>
+    <div class="text">
+         TIC TAC TOE
+        </div>
+    
+    <div id="second1">
+    <form action="/turn1" method="post" class="centered" style="width:450px;">
+      
+
+    <div class="start-section">
+        
+        <img src="{{url_for('static', filename='xxx1.jpg')}}"  style="display:block;"  width="30%" height="30%">
+        <br>
+        
+           <select class="form-c" name="player1">
+              <option value="h" > Human Player <br/></option>
+              <option  value="2" > Random Computer Player <br/></option>
+              <option  value="3" > Minimax Computer Player <br/></option>
+              <option  value="4" > Minimax w/ Alpha Beta Pruning Computer Player <br/></option>
+           </select>
+         
+    
+    </div>
+     
+    <br>
+    <div class="start-section">
+      <img src="{{url_for('static', filename='ooo1.jpg')}}"  style="display:block;"  width="30%" height="30%">
+        <br>
+     
+      <select class="form-c" name="player2">
+        
+        <option  value="h" > Human Player <br/></option>
+        <option  value="2" > Random Computer Player <br/></option>
+        <option  value="3" > Minimax Computer Player <br/></option>
+        <option  value="4" > Minimax w/ Alpha Beta Pruning Computer Player <br/></option>
+       </select>
+      
+      <br>
+      <br>
+      
+<div class="btn-group" data-toggle="buttons">
+  <label class="btn btn-primary">
+    <input type="radio" name="options"  value="2">Easy
+  </label>
+  <label class="btn btn-primary">
+    <input type="radio" name="options" value="5">Medium
+  </label>
+  <label class="btn btn-primary">
+    <input type="radio" name="options" value="10">Hard
+  </label>
+</div>
+
+
+ <input type="submit" value="start">
+      
+    </div>
+  </form>
+   
+ 
+  </div>
+  </body>
+</html>
